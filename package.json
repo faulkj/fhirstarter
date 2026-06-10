@@ -2,15 +2,41 @@
    "name": "fhirstarterjs",
    "version": "1.0.5",
    "description": "SMART Backend Services auth lifecycle for any FHIR client",
+   "author": "Joshua Faulkenberry <j@joshuafaulkenberry.com> (https://joshuafaulkenberry.com/)",
+   "license": "Kopimi",
+   "homepage": "https://github.com/FaulkJ/fhirstarter#readme",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/FaulkJ/fhirstarter.git"
+   },
+   "bugs": {
+      "url": "https://github.com/FaulkJ/fhirstarter/issues"
+   },
+   "keywords": [
+      "fhir",
+      "smart",
+      "smart-on-fhir",
+      "backend-services",
+      "oauth",
+      "jwt",
+      "hl7",
+      "healthcare",
+      "ehr",
+      "epic",
+      "fhirclient",
+      "token",
+      "jwks"
+   ],
    "type": "module",
    "main": "./dist/fhirstarter.js",
-   "types": "./ts/fhirstarter.ts",
+   "types": "./types/index.d.ts",
    "exports": {
       ".": {
          "types": "./types/index.d.ts",
          "import": "./dist/fhirstarter.js"
       }
    },
+   "sideEffects": false,
    "files": [
       "dist",
       "ts",
@@ -21,8 +47,6 @@
    "engines": {
       "node": ">=20"
    },
-   "author": "Joshua Faulkenberry <j@joshuafaulkenberry.com> (https://joshuafaulkenberry.com/)",
-   "license": "Kopimi",
    "scripts": {
       "check": "tsc --noEmit",
       "build": "tsc -p tsconfig.build.json",
