@@ -317,7 +317,7 @@ export default class FHIRStarter implements Provider {
       })
          .setProtectedHeader(header)
          .setIssuedAt()
-         .setNotBefore("now")
+         .setNotBefore(0)
          .setExpirationTime("5m")
          .sign(privateKey);
    };
