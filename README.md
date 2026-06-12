@@ -1,4 +1,4 @@
-# 🔥 fhirstarterjs
+# 🔥 fhirstarter
 
 SMART on FHIR Backend Services auth lifecycle for any FHIR client.
 
