@@ -13,7 +13,7 @@ import { readFileSync } from "node:fs";
  * Manages client-credentials token acquisition and proactive refresh
  * using a private RSA key and the JWT Bearer client-assertion flow (RFC 7523).
  */
-export default class FHIRStarter implements Provider {
+export default class fhirStarter implements Provider {
    private readonly config: AuthConfig;
    private readonly privateKeyText: string;
    private readonly refreshCallbacks: Set<RefreshCallback> = new Set();
@@ -39,7 +39,7 @@ export default class FHIRStarter implements Provider {
       if (!config.tokenEndpointUrl)
          throw new Error("AuthConfig: tokenEndpointUrl is required");
 
-      const scopes = FHIRStarter.normalizeScopes(config.scopes);
+      const scopes = fhirStarter.normalizeScopes(config.scopes);
       if (scopes.length === 0)
          throw new Error("AuthConfig: at least one scope is required");
 
@@ -52,7 +52,7 @@ export default class FHIRStarter implements Provider {
       }
 
       this.config = config;
-      this.privateKeyText = FHIRStarter.resolvePrivateKey(config.privateKey);
+      this.privateKeyText = fhirStarter.resolvePrivateKey(config.privateKey);
    }
 
    // --- Sync getters ---
@@ -244,7 +244,7 @@ export default class FHIRStarter implements Provider {
 
    private refreshAccessToken = async (): Promise<TokenCache> => {
       const jwt = await this.buildJwt(),
-         scopes = FHIRStarter.normalizeScopes(this.config.scopes),
+         scopes = fhirStarter.normalizeScopes(this.config.scopes),
          body = new URLSearchParams({
             grant_type: "client_credentials",
             client_assertion_type:

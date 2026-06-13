@@ -21,7 +21,7 @@ declare global {
       keys: import("jose").JWK[]
    }
 
-   /** Auth lifecycle provider implemented by {@link FHIRStarter}. */
+   /** Auth lifecycle provider implemented by {@link fhirStarter}. */
    interface Provider {
       /** Current valid token, or null if no unexpired token is cached. */
       readonly token: string | null

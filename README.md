@@ -1,4 +1,4 @@
-# 🔥 fhirstarter
+# 🔥 fhirStarter
 
 SMART on FHIR Backend Services auth lifecycle for any FHIR client.
 
@@ -10,13 +10,13 @@ npm install fhirstarterjs
 
 ## Usage
 
-This example uses the official `fhirclient` package as the FHIR client; `fhirstarterjs` only manages auth.
+This example uses the official `fhirclient` package as the FHIR client; `fhirStarter` only manages auth.
 
 ```ts
 import FHIR from "fhirclient"
-import FHIRStarter from "fhirstarterjs"
+import fhirStarter from "fhirstarterjs"
 
-const auth = new FHIRStarter({
+const auth = new fhirStarter({
    clientId: "your-client-id",
    privateKey: "./privatekey.pem",
    tokenEndpointUrl: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2/token",
@@ -35,7 +35,7 @@ const bundle = await client.request("Patient?family=Smith")
 
 `auth.start()` fetches the first token and starts the proactive refresh loop. `auth.tokenResponse()` returns a live getter-backed object — `fhirclient` reads `access_token` dynamically per request, so it always picks up the latest token.
 
-`fhirstarterjs` does not fetch FHIR resources and does not bundle a FHIR client. It manages the auth lifecycle; the FHIR client does the rest.
+`fhirStarter` does not fetch FHIR resources and does not bundle a FHIR client. It manages the auth lifecycle; the FHIR client does the rest.
 
 `privateKey` can be PEM text, a `Buffer` from `readFileSync`, or a path to a PKCS#8 PEM file.
 
@@ -68,7 +68,7 @@ const res = await fetch(url, {
 
 ## API
 
-`new FHIRStarter(config)`
+`new fhirStarter(config)`
 
 | Member | Returns | Description |
 |---|---|---|
@@ -90,9 +90,9 @@ Some SMART Backend Services registrations require a public JWKS URL when using `
 
 ```ts
 import { writeFileSync } from "node:fs"
-import FHIRStarter from "fhirstarterjs"
+import fhirStarter from "fhirstarterjs"
 
-const auth = new FHIRStarter({
+const auth = new fhirStarter({
    clientId: "your-client-id",
    privateKey: "./privatekey.pem",
    tokenEndpointUrl: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2/token",
