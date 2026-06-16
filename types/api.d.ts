@@ -48,6 +48,7 @@ declare global {
       token_type: "bearer"
       readonly access_token: string | undefined
       readonly expires_in: number | undefined
+      readonly scope: string | undefined
    }
 }
 

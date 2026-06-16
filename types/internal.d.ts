@@ -14,6 +14,8 @@ declare global {
       refreshAt: number
       /** Epoch ms — actual token expiry. Never treat as expired before this. */
       expiresAt: number
+      /** Granted scopes returned by the token endpoint, if any. */
+      scope?: string
    }
 
    type RefreshCallback = (token: string) => void

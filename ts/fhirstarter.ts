@@ -127,6 +127,9 @@ export default class fhirStarter implements Provider {
          get expires_in() {
             return auth.expiresIn ?? undefined;
          },
+         get scope() {
+            return auth.cache?.scope;
+         },
       };
    };
 
@@ -285,6 +288,7 @@ export default class fhirStarter implements Provider {
             accessToken: data.access_token,
             refreshAt,
             expiresAt,
+            ...(typeof data.scope === "string" && { scope: data.scope }),
          };
 
       this.cache = cache;
