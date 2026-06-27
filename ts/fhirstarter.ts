@@ -6,6 +6,7 @@ import {
 } from "jose"
 import { createHash, createPrivateKey, createPublicKey, randomUUID } from "node:crypto"
 import { readFileSync } from "node:fs"
+import type { PublicKeyInput } from "node:crypto"
 
 /**
  * SMART Backend Services auth provider.
@@ -364,7 +365,7 @@ export default class fhirStarter implements Provider {
       if (key.asymmetricKeyType !== "rsa")
          throw new Error(`thumbprint: expected RSA key, got ${key.asymmetricKeyType}`)
       const
-         pub = createPublicKey(key).export({ format: "jwk" }) as { e?: string, n?: string, kty?: string },
+         pub = createPublicKey(key as unknown as PublicKeyInput).export({ format: "jwk" }) as { e?: string, n?: string, kty?: string },
          canonical = JSON.stringify({ e: pub.e, kty: "RSA", n: pub.n })
       return createHash("sha256").update(canonical).digest("base64url")
    }
